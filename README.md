@@ -1,4 +1,4 @@
-iPXE Prebuilt binary web interface
+iPXE Prebuilt binary web interface [![Build Status](https://travis-ci.com/lps-rocks/rom-o-matic.svg?branch=master)](https://travis-ci.com/lps-rocks/rom-o-matic)
 =====
 
 ## Why
@@ -15,7 +15,7 @@ All GUI options (git version/nics list/compile options) are generated from the i
 The build.fcgi script written in Perl by Michael Brown.
 
 ## Test
-You can acces it via [rom-o-matic.dev](http://rom-o-matic.dev)
+You can access a live version here: [rom-o-matic.dev](http://rom-o-matic.dev)
 
 ## Using DockerHub image
 
