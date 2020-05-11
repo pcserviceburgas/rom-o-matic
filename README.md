@@ -2,7 +2,7 @@ iPXE Prebuilt binary web interface
 =====
 
 ## Why
-A Prebuilt binary web interface. Many users would prefer to be able to download prebuilt binary versions of iPXE, rather than building it from source.
+A web interface for building iPXE binaries. Many users would prefer to be able to download prebuilt binary versions of iPXE, rather than building it from source.
 
 This interface is built on previous work here: [https://github.com/xbgmsharp/ipxe-buildweb](https://github.com/xbgmsharp/ipxe-buildweb)
 
@@ -10,12 +10,12 @@ This interface is built on previous work here: [https://github.com/xbgmsharp/ipx
 A web-based user interface that provide a way for the user to select any relevant iPXE build options, specify any embedded script, etc, and then construct and download the appropriate file.
 
 ## How
-The user interface, is using HTML, CSS as well as Javascript (jQuery) and a suitable server-side language (such as Perl and PHP).
-All GUI options (git version/nics list/compile options) are generated dynamicaly using PHP.
-The build.fcgi script is written in Perl and was wrote by Michael Brown.
+The user interface, is using HTML, CSS as well as Javascript (jQuery) and a suitable server-side language (Perl).
+All GUI options (git version/nics list/compile options) are generated from the iPXE source code dynamically.
+The build.fcgi script written in Perl by Michael Brown.
 
 ## Test
-You can acces it via [rom-o-matic.dev](http://rom-o-matic.eu)
+You can acces it via [rom-o-matic.dev](http://rom-o-matic.dev)
 
 ## Using DockerHub image
 
@@ -23,7 +23,7 @@ You can acces it via [rom-o-matic.dev](http://rom-o-matic.eu)
 
 * Supported tags:
 
-`latest` - Latest ([Dockerfile](https://github.com/lps-rocks/rom-o-matic/blob/master/Dockerfile))
+    `latest` - Latest ([Dockerfile](https://github.com/lps-rocks/rom-o-matic/blob/master/Dockerfile))
 
 * Supported architectures: x86-64
 
