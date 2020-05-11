@@ -10,8 +10,9 @@ rm -Rf /tmp/ipxe/cache/*
 
 # Clone iPXE into temporary source as apache
 if [[ ! -d /tmp/ipxe/source ]]; then
-	git clone https://github.com/ipxe/ipxe.git /tmp/ipxe/source
+    git clone https://github.com/ipxe/ipxe.git /tmp/ipxe/source
 else
+    cd /tmp/ipxe/source
     git pull
 fi
 
