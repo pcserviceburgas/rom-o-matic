@@ -28,7 +28,7 @@ RUN apk --no-cache upgrade
 RUN apk add --no-cache wget sudo bash
 
 # Install Compiling Dependencies 
-RUN apk add make gcc libc-dev zlib-dev openssl-dev xz-dev binutils-dev cdrkit syslinux
+RUN apk add --no-cache make gcc libc-dev zlib-dev openssl-dev xz-dev binutils-dev cdrkit syslinux
 
 # Perl and Perl Dependencies
 RUN apk add --no-cache perl perl-json perl-cgi perl-fcgi perl-uri perl-config-inifiles perl-ipc-system-simple perl-app-cpanminus 
