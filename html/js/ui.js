@@ -2,8 +2,10 @@
  * ================================================================================
  * Dynamic iPXE image generator
  *
+ * Copyright (C) 2020 James DeVincentis. Based on work of Francois Lacroix. 
  * Copyright (C) 2012-2019 Francois Lacroix. All Rights Reserved.
  * Website: http://ipxe.org, https://github.com/xbgmsharp/ipxe-buildweb
+ *     https://github.com/lps-rocks/rom-o-matic
  * License: GNU General Public License version 3 or later; see LICENSE.txt
  * ================================================================================
  */
@@ -11,7 +13,7 @@ $(document).ready(function() {
 
         var roms = []; /* Global Object for roms ID validation */
 
-        $.getJSON("gitversion.php", null, function(data) {
+        $.getJSON("versions.json", null, function(data) {
                 //alert(data[0]);
                 var git = '<p><h2 class="wizard-header">Generating iPXE build image version ' + data[0] + '</h2></p>';
                 $("#gitabbrev").html(git);
@@ -23,7 +25,7 @@ $(document).ready(function() {
                 $("#gitrevision").html(options);
         })
 
-        $.getJSON("nics.php", null, function(listnics) {
+        $.getJSON("nics.json", null, function(listnics) {
                 //alert(listnics.length);
                 var options = '<option value="all" selected>all-drivers</option>\n<option value="undionly">undionly</option>\n<option value="undi">undi</option>';
                 for (var i = 0; i < listnics.length; i++) {
@@ -37,7 +39,7 @@ $(document).ready(function() {
                 $("#nics").html(options);
         })
 
-        $.getJSON("options.php", null, function(custom) {
+        $.getJSON("options.json", null, function(custom) {
                 //alert(custom.length);
 
                 // List of subtitle of options	

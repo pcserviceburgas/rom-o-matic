@@ -4,12 +4,15 @@
 #
 # Initial version by Michael Brown <mcb30@ipxe.org>
 # Modified version by Francois Lacroix <xbgmsharp@gmail.com>
+# Current version by James DeVincentis <jd@llps.rocks>
 #------------------------------------------------------------------------
 # Dynamic iPXE image generator
 #
+# Copyright (C) 2020 James DeVincentis. Based on the work of Francois Lacroix
 # Copyright (C) 2012-2019 Francois Lacroix. All Rights Reserved.
 # License:  GNU General Public License version 3 or later; see LICENSE.txt
 # Website:  http://ipxe.org, https://github.com/xbgmsharp/ipxe-buildweb
+#    https://github.com/lps-rocks/rom-o-matic
 #------------------------------------------------------------------------
 ### Dependencies
 # apt-get install liburi-perl libfcgi-perl libconfig-inifiles-perl libipc-system-simple-perl libsub-override-perl
@@ -51,6 +54,9 @@ use Sub::Override;
 use strict;
 use warnings;
 
+# Disable warning, not applicable here
+$CGI::LIST_CONTEXT_WARN = 0;
+
 # Parse command line options
 my $verbosity = 2;
 my $cfgfile = "build.ini";
@@ -70,6 +76,7 @@ my $cfg = Config::IniFiles->new ( -file => $cfgfile )
     or die join ( "\n", @Config::IniFiles::errors )."\n";
 my $repository = $cfg->val ( "source", "repository" )
     or die "No repository specified in ".$cfgfile."\n";
+my $repository_git = "${repository}/.git";
 my $niceness = $cfg->val ( "build", "niceness", 0 );
 my $concurrency = $cfg->val ( "build", "concurrency" );
 my $bindirs = $cfg->val ( "build", "bindirs", "bin" );
@@ -267,13 +274,13 @@ sub save_cached_binaries {
   # make these two operations properly atomic.)
   my $tag = "ipxe-build/cached/".$bindir."/".$revision;
   warn "Creating tag ".$tag."...\n" if $verbosity > 1;
-  systemx ( "git", "--git-dir", $repository, "tag", "--force",
+  systemx ( "git", "--git-dir", $repository_git, "tag", "--force",
 	    $tag, $revision );
 
   # Obtain list of all cached binaries
   warn "Listing all cache tags...\n" if $verbosity > 1;
   my @candidates = map { chomp; ( $_ eq $tag ) ? () : ( { tag => $_ } ) }
-		       capturex ( "git", "--git-dir", $repository, "tag", "-l",
+		       capturex ( "git", "--git-dir", $repository_git, "tag", "-l",
 				  "ipxe-build/cached/*" );
 
   # Find modification times for candidates
@@ -301,7 +308,7 @@ sub save_cached_binaries {
 
     # Delete tag
     warn "Deleting tag ".$candidate->{tag}."...\n" if $verbosity > 1;
-    systemx ( "git", "--git-dir", $repository, "tag", "-d", $candidate->{tag} );
+    systemx ( "git", "--git-dir", $repository_git, "tag", "-d", $candidate->{tag} );
 
     # Delete tarball
     warn "Deleting binary tarball ".$candidate->{tarball}."...\n"
@@ -378,7 +385,7 @@ sub start_gzip {
   # compressed tarball already exists.
   my $gztag = "ipxe-build/cached/".$bindir."/".$revision.".gz";
   warn "Creating tag ".$gztag."...\n" if $verbosity > 2;
-  systemx ( "git", "--git-dir", $repository, "tag", "--force",
+  systemx ( "git", "--git-dir", $repository_git, "tag", "--force",
 	    $gztag, $revision );
 
   # Delete tag for uncompressed tarball.  Allow for the tag to have
@@ -387,7 +394,7 @@ sub start_gzip {
   my $tag = "ipxe-build/cached/".$bindir."/".$revision;
   warn "Deleting tag ".$tag."...\n" if $verbosity > 2;
   eval {
-    systemx ( "git", "--git-dir", $repository, "tag", "-d", $tag );
+    systemx ( "git", "--git-dir", $repository_git, "tag", "-d", $tag );
   };
   if ( $@ ) {
     warn "Could not delete tag ".$tag.": $@\n";
@@ -470,7 +477,7 @@ sub embed {
   foreach my $param ( sort grep { /^EMBED/ } keys %$params ) {
     ( undef, my $name ) = ( $param =~ /^EMBED(\.(.+))?$/ )
 	or die "Invalid EMBED* parameter name \"".$param."\"\n";
-    foreach my $value ( $cgi->param ( $param ) ) {
+    foreach my $value ( $cgi->multi_param ( $param ) ) {
       next unless $value;
       my $tempfile = $cgi->tmpFileName ( $value );
       if ( $tempfile ) {
@@ -588,7 +595,7 @@ sub build {
 
   # Canonicalise git revision
   warn "Canonicalising revision ".$revision."...\n" if $verbosity > 1;
-  $revision = capturex ( "git", "--git-dir", $repository, "rev-parse",
+  $revision = capturex ( "git", "--git-dir", $repository_git, "rev-parse",
 			 "--verify", $revision );
   chomp $revision;
   warn "Canonical revision: ".$revision."\n" if $verbosity > 0;
@@ -605,9 +612,9 @@ sub build {
   warn "Temporary working tree: ".$worktree."\n" if $verbosity > 0;
 
   # Clone git tree into temporary directory
-  warn "Cloning git tree from ".$repository."...\n" if $verbosity > 1;
+  warn "Cloning git tree from ".$repository_git."...\n" if $verbosity > 1;
   systemx ( "git", "clone", "--quiet", "--local", "--shared", "--bare",
-	    $repository, $gitdir );
+	    $repository_git, $gitdir );
 
   # Find best cached binary set, if any
   my $cached = load_cached_binaries ( $gitdir, $worktree, $revision, $bindir );
