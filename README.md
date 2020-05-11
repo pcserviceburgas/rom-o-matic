@@ -4,6 +4,8 @@ iPXE Prebuilt binary web interface
 ## Why
 A Prebuilt binary web interface. Many users would prefer to be able to download prebuilt binary versions of iPXE, rather than building it from source.
 
+This interface is built on previous work here: [https://github.com/xbgmsharp/ipxe-buildweb](https://github.com/xbgmsharp/ipxe-buildweb)
+
 ## What
 A web-based user interface that provide a way for the user to select any relevant iPXE build options, specify any embedded script, etc, and then construct and download the appropriate file.
 
@@ -13,31 +15,27 @@ All GUI options (git version/nics list/compile options) are generated dynamicaly
 The build.fcgi script is written in Perl and was wrote by Michael Brown.
 
 ## Test
-You can acces it via [rom-o-matic.eu](http://rom-o-matic.eu)
+You can acces it via [rom-o-matic.dev](http://rom-o-matic.eu)
 
-## Using Official DockerHub image [![Build Status](https://travis-ci.com/xbgmsharp/ipxe-buildweb.svg?branch=master)](https://travis-ci.com/xbgmsharp/ipxe-buildweb)
+## Using DockerHub image
 
-[![dockeri.co](https://dockeri.co/image/xbgmsharp/ipxe-buildweb)](https://hub.docker.com/r/xbgmsharp/ipxe-buildweb)
+[![dockeri.co](https://dockeri.co/image/lpsrocks/rom-o-matic)](https://hub.docker.com/r/lpsrocks/rom-o-matic)
 
 * Supported tags:
 
-`latest` - Latest ([Dockerfile](https://github.com/xbgmsharp/ipxe-buildweb/blob/master/Dockerfile))
-
-> The docker image is updated daily by a cron job from ([Travis CI](https://travis-ci.com/xbgmsharp/ipxe-buildweb)).
+`latest` - Latest ([Dockerfile](https://github.com/lps-rocks/rom-o-matic/blob/master/Dockerfile))
 
 * Supported architectures: x86-64
 
-* Run ipxe-buildweb
+* Run rom-o-matic 
 
 After a successful [Docker installation](https://docs.docker.com/engine/installation/) you just need to execute the following command in the shell:
 
 ```bash
-docker pull xbgmsharp/ipxe-buildweb
 docker run  -d \
 	--publish 8080:80 \
-	--publish 22:22 \
-	--name ipxe-buildweb \
-	xbgmsharp/ipxe-buildweb
+	--name rom-o-matic \
+    lpsrocks/rom-o-matic	
 ```
 
 ## Test using Docker
@@ -57,24 +55,24 @@ The following command build the build directly from the github repository.
 
 The build process might take some time a while as it download the origin Ubuntu LTS 14.04 docker image.
 ```bash
-$ docker build --rm=true --no-cache=true -t xbgmsharp/ipxe-buildweb github.com/xbgmsharp/ipxe-buildweb.git
+$ docker build --rm=true --no-cache=true -t lpsrocks/rom-o-matic github.com/lps-rocks/rom-o-matic.git
 ```
 
 Alternatively, you can build the image localy after cloning the repository.
 ```bash
-$ docker build --rm=true --no-cache=true -t xbgmsharp/ipxe-buildweb .
+$ docker build --rm=true --no-cache=true -t lpsrocks/rom-o-matic .
 ```
 
 * Run the container
 
 Run as a detach container
 ```bash
-$ docker run -d -p 22:22 -p 8080:80 -t xbgmsharp/ipxe-buildweb
+$ docker run -d -p 8080:80 -t lpsrocks/rom-o-matic
 ```
 
 Or run the container with an attach shell
 ```
-$ docker run -i --rm -p 22:22 -p 8080:80 -t xbgmsharp/ipxe-buildweb /bin/bash
+$ docker run -i --rm -p 22:22 -p 8080:80 -t lpsrocks/rom-o-matic /bin/bash
 ```
 
 * Check the IP
@@ -119,8 +117,8 @@ $ docker logs CONTAINER_ID
 5. Create an [Issue][1] with a link to your branch
 6. Or Send me a [Pull Request][2]
 
-[1]: https://github.com/xbgmsharp/ipxe-buildweb/issues
-[2]: https://github.com/xbgmsharp/ipxe-buildweb/pull/new/master
+[1]: https://github.com/lpsrocks/rom-o-matic/issues
+[2]: https://github.com/lpsrocks/rom-o-matic/pull/new/master
 
 ## License
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
