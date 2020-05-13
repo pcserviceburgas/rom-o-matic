@@ -1,6 +1,9 @@
 iPXE Prebuilt binary web interface [![Build Status](https://travis-ci.com/lps-rocks/rom-o-matic.svg?branch=master)](https://travis-ci.com/lps-rocks/rom-o-matic)
 =====
 
+## Demo
+You can access a live version here: [rom-o-matic.dev](https://rom-o-matic.dev). Check the [server status](https://status.rom-o-matic.dev) page to check if the demo server is down. The demo server is rebuilt nightly and will be hosted indefinitely. This project is attempting to revive previous domains, rom-o-matic.eu and rom-o-matic.net as well.
+
 ## Why
 A web interface for building iPXE binaries. Many users would prefer to be able to download prebuilt binary versions of iPXE, rather than building it from source.
 
@@ -13,9 +16,6 @@ A web-based user interface that provide a way for the user to select any relevan
 The user interface, is using HTML, CSS as well as Javascript (jQuery) and a suitable server-side language (Perl).
 All GUI options (git version/nics list/compile options) are generated from the iPXE source code dynamically.
 The build.fcgi script written in Perl by Michael Brown.
-
-## Test
-You can access a live version here: [rom-o-matic.dev](http://rom-o-matic.dev)
 
 ## Using DockerHub image
 
