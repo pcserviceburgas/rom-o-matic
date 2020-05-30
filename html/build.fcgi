@@ -179,8 +179,12 @@ sub load_cached_binaries {
   my $tarball = catfile ( $cacheroot, $cached."-".$bindir.".tar".$suffix );
   warn "Opening binary tarball ".$tarball."...\n" if $verbosity > 1;
   my $tarfh;
-  open $tarfh, "<", $tarball
-      or die "Could not open ".$tarball.": $!\n";
+  open $tarfh, "<", $tarball;
+  if ( ! $tarfh ) {
+    warn "Could not open ".$tarball.": $! - Skipping Cache.\n" if $verbosity > 0;
+    cache_unlock();
+    return;
+  }
   warn "Opened binary tarball ".$tarball."...\n" if $verbosity > 1;
 
   # Update tarball's timestamp if it is an exact match
