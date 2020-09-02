@@ -11,9 +11,16 @@ rm -Rf /tmp/ipxe/cache/*
 # Clone iPXE into temporary source as apache
 if [[ ! -d /tmp/ipxe/source ]]; then
     git clone https://github.com/ipxe/ipxe.git /tmp/ipxe/source
+    while [ $? -ne 0 ]; do
+        git clone https://github.com/ipxe/ipxe.git /tmp/ipxe/source
+        sleep 15
+    done
 else
     cd /tmp/ipxe/source
-    git pull
+    while [ $? -ne 0 ]; do
+        git pull
+        sleep 15
+    done
 fi
 
 # Change owner of files
