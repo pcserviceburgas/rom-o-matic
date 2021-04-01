@@ -86,4 +86,4 @@ $ docker inspect CONTAINER_ID | grep IPA
 $ docker logs CONTAINER_ID
 ```
 
-* Enjoy!
+* Пользуйтесь!
