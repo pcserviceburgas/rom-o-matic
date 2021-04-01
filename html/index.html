@@ -2,6 +2,7 @@
  * ================================================================================
  * Dynamic iPXE image generator
  *
+ * Copyright (C) 2021 Alexander Sorokin. Based on work of James DeVincentis.
  * Copyright (C) 2020 James DeVincentis. Based on work of Francois Lacroix. 
  * Copyright (C) 2012-2019 Francois Lacroix. All Rights Reserved.
  * Website: http://ipxe.org, https://github.com/xbgmsharp/ipxe-buildweb
