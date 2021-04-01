@@ -67,7 +67,7 @@
 				<div class="spacer">
 					<h2 class="wizard-header">Выберите формат образа:</h2>
 					<p>
-						<a class="help" href="http://ipxe.org/download#choosing_what_to_build" target="_blank">Помогите мне выбрать (English)</a>
+						<a class="help" href="http://ipxe.org/download#choosing_what_to_build" target="_blank">Помогите мне выбрать (Eng)</a>
 					</p>
 					<select id="outputformatadv" name="outputformatadv">
 						<option value='-' selected>-</option>
@@ -96,25 +96,25 @@
 
 			<div id="rom" class="rom" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Enter NIC device details:</h2>
+					<h2 class="wizard-header">Введите информацию о NIC устройстве:</h2>
 					<p>
-						You have chosen Binary ROM image as your output format. To match the image to
-						your NIC device, please enter its PCI VENDOR CODE and PCI DEVICE CODE.
+						Вы выбрали бинарный ROM образ в качестве формата. Для соответствия образа
+						Вашему NIC устройству, пожалуйста, введите его PCI VENDOR CODE и PCI DEVICE CODE.
 					</p>
-					<a class="help" href="http://ipxe.org/howto/romburning" target="_blank">Information on how to determine NIC PCI IDs</a>:<br/>
+					<a class="help" href="http://ipxe.org/howto/romburning" target="_blank">Информация о том, как узнать NIC PCI IDs</a>:<br/>
 					<label for="pci_vendor_code" form="ipxeimage">PCI VENDOR CODE: <input type="text" size="6" maxlength="4" value="" id="pci_vendor_code" name="pci_vendor_code" placeholder="8086"/></label>
 					<label for="pci_device_code" form="ipxeimage">PCI DEVICE CODE: <input type="text" size="6" maxlength="4" value="" id="pci_device_code" name="pci_device_code" placeholder="10de"/></label>
 					<p>
 						<div id="pci_roms_id_error" class="error" style="display: none">
 						</div>
-						iPXE does not support all possible PCI IDs for supported NICs.
+						iPXE поддерживает не все PCI ID для поддерживаемых NIC.
 					</p>
 				</div>
 			</div>
 
 			<div id="iface" class="iface" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Choose a NIC type:</h2>
+					<h2 class="wizard-header">Выберите тип NIC:</h2>
 					<select name="nics" id="nics">
 					</select>
 				</div>
@@ -122,8 +122,8 @@
 
 			<div id="config" class="config" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Customize image configuration options:</h2>
-					<a class="help" href="http://ipxe.org/buildcfg" target="_blank">Build configuration options</a><br/>
+					<h2 class="wizard-header">Изменение настроек конфигурации образа:</h2>
+					<a class="help" href="http://ipxe.org/buildcfg" target="_blank">Настройки кофигурации сборки</a><br/>
 					<div id="options" class="options">
 					</div>
 				</div>
@@ -132,31 +132,31 @@
 
 			<div id="embedded" class="embedded" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Embedded script:</h2>
-					<a class="help" href="http://ipxe.org/embed" target="_blank">Read about embedded scripts</a><br/>
-					<br/>Paste your script:<br/>
+					<h2 class="wizard-header">Встроенный скрипт:</h2>
+					<a class="help" href="http://ipxe.org/embed" target="_blank">Прочитайте о встроенных скриптах (Eng)</a><br/>
+					<br/>Вставьте Ваш скрипт:<br/>
 					<textarea id="embed" name="embed" rows="4" cols="60" placeholder="#!ipxe"></textarea>
-					<br/><br/>Or import your script:<br/>
+					<br/><br/>Или импортируйте Ваш скрипт:<br/>
 					<input id="embedfile" name="embedfile" type="file" />
-					<br/><br/>Or drop your script:<br/>
-					<div id="drop_zone">Drop your script here</div>
+					<br/><br/>Или перетащите Ваш скрипт:<br/>
+					<div id="drop_zone">Перетащите Ваш скрипт сюда</div>
 					<output id="list"></output>
 				</div>
 			</div>
 
 			<div id="debug" class="debug" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Debug build:</h2>
-					<a class="help" href="http://ipxe.org/download#debug_builds" target="_blank">Read about debugging options</a><br/>
+					<h2 class="wizard-header">Отладка сборки:</h2>
+					<a class="help" href="http://ipxe.org/download#debug_builds" target="_blank">Прочитайте о возможностях отладки (Eng)</a><br/>
 					Enable Debug: <input id="setdebug" name="setdebug" type="text" value="" placeholder="scsi:3,iscsi"/><br/>
 				</div>
 			</div>
 
 			<div id="gitversion" class="gitversion" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Which revision?</h2>
-					<a class="help" href="http://git.ipxe.org/ipxe.git/shortlog" target="_blank">Read about GIT revision</a><br/>
-					Default master (recommended)
+					<h2 class="wizard-header">Какая ревизия?</h2>
+					<a class="help" href="http://git.ipxe.org/ipxe.git/shortlog" target="_blank">Прочитайте о ревизиях GIT (Eng)n</a><br/>
+					По умолчанию главная (рекомендуется)
 					<select id="gitrevision" name="gitrevision">
 					</select>
 				</div>
@@ -166,16 +166,16 @@
 				<div class="spacer">
 					<h2 class="wizard-header">Ready to build?</h2>
 					<div align="center">
-						<input class="buildbutton" name="proceed" id="proceed" type="submit" value="Proceed &gt;&gt;" />
-						<input class="savebutton" name="save" id="save" type="button" value="Save buildcfg" />
+						<input class="buildbutton" name="proceed" id="proceed" type="submit" value="Сборка!" />
+						<input class="savebutton" name="save" id="save" type="button" value="Сохранить конфигурацию" />
 					</div>
 				</div>
 			</div>
 
 			<div id="result" class="result" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Build failed</h2>
-					<div id="failed" class="failed"></div>
+					<h2 class="wizard-header">Сборка неуспешна</h2>
+					<div id="failed" class="неуспешно"></div>
 				</div>
 			</div>
 		</form>
@@ -183,22 +183,22 @@
 
 		<div id="notes" class="notes">
 			<div class="spacer">
-				<h3>Information:</h3>
+				<h3>Информация:</h3>
 				<ul>
-					<li><a href="#" id="about2" title="About this website">About this website</a>.</li>
-					<li><a href="ipxe-pres/" title="iPXE presentation" target="_blank">An iPXE presentation</a>.</li>
+					<li><a href="#" id="about2" title="About this website">Об этом сайте</a>.</li>
+					<li><a href="ipxe-pres/" title="iPXE presentation" target="_blank">iPXE презентация (Eng)</a>.</li>
 				</ul>
 			</div>
 			<div class="spacer">
-				<h3>Notes:</h3>
-				For help and information about getting your OS loaded with iPXE or Network boot:<br>
+				<h3>Заметки:</h3>
+				Для помощи и информации о том, как загрузить Вашу ОС с помощью iPXE или загрузки по сети (Eng):<br>
 				<ul>
-					<li>Visit the iPXE Home Page at <a href="http://ipxe.org/" title="iPXE" target="_blank">http://ipxe.org/</a>.</li>
-					<li>You can discuss general iPXE issues in the iPXE <a href="http://forum.ipxe.org/" target="_blank">discussion forum</a>.</li>
-					<li><a href="https://lists.ipxe.org/mailman/listinfo/ipxe-devel" target="_blank">Subscribe</a> to the mailing list, or view the <a href="http://lists.ipxe.org/pipermail/ipxe-devel/" target="_blank">archive of past messages</a>.</li>
-					<li>Real-time help is often available on IRC on the #ipxe channel on the Freenode IRC network.</li>
-					<li>Learn more about network booting at <a href="http://networkboot.org/" target="_blank">http://networkboot.org/</a>.</li>
-					<li>Tutorial about PXE Booting and Utilities Menu <a href="http://brandon.penglase.net/index.php?title=PXE_Booting_and_Utilities_Menu" target="_blank">PXE Booting and Utilities Menu</a>.</li>
+					<li>Посетите официальный сайт iPXE <a href="http://ipxe.org/" title="iPXE" target="_blank">http://ipxe.org/</a>.</li>
+					<li>Вы можете обсудить основные ошибки iPXE в обсуждении на <a href="http://forum.ipxe.org/" target="_blank">форуме iPXE</a>.</li>
+					<li><a href="https://lists.ipxe.org/mailman/listinfo/ipxe-devel" target="_blank">Подписаться</a> на рассылку, или просмотреть <a href="http://lists.ipxe.org/pipermail/ipxe-devel/" target="_blank">архив сообщений</a>.</li>
+					<li>Помощь в режиме реального времени обычно протекает в IRC на канале #ipxe в Freenode IRC network.</li>
+					<li>Узнайте больше о сетевой загрузке на <a href="http://networkboot.org/" target="_blank">http://networkboot.org/</a>.</li>
+					<li>Уроки о загрузке PXE и меню утилит на <a href="http://brandon.penglase.net/index.php?title=PXE_Booting_and_Utilities_Menu" target="_blank">PXE Booting and Utilities Menu</a>.</li>
 				</ul>
 			</div>
 		</div>
@@ -213,8 +213,8 @@
 
 		<noscript>
 			<div class="noscript">
-					For full functionality of this site it is necessary to enable JavaScript.<br/>
-					Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.
+					Для полного функционирования этого сайта необходимо включить JavaScript.<br/>
+					Здесь расположены <a href="http://www.enable-javascript.com/" target="_blank"> инструкции по включению JavaScript в Вашем браузере</a>.
 			</div>
 		</noscript>
 	</body>
