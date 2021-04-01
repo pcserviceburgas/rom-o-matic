@@ -4,4 +4,4 @@ services:
 language: bash
 script:
   - docker version
-  - docker build --rm=true --no-cache=true -t lps-rocks/rom-o-matic github.com/lps-rocks/rom-o-matic.git
+  - docker build --rm=true --no-cache=true -t sebaxakerhtc/rom-o-matic github.com/sebaxakerhtc/rom-o-matic.git
