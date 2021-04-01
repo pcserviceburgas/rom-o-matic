@@ -4,15 +4,13 @@ iPXE Prebuilt binary web interface [![Build Status](https://travis-ci.com/lps-ro
 ## Демонстрация
 Вы можете посмотреь, как выглядит данный проект на сайте: [ipxe.pcserviceburgas.com](https://ipxe.pcserviceburgas.com/). Этот проект является русификацией действующего проекта [rom-o-matic.dev](https://github.com/lps-rocks/rom-o-matic)
 
-## Why
-A web interface for building iPXE binaries. Many users would prefer to be able to download prebuilt binary versions of iPXE, rather than building it from source.
+## Зачем
+Web интерфейс с подготовленными образами. Многие пользователи предпочитают скачать подготовленные образы iPXE вместо того, чтоб собирать их из исходного кода.
 
-This interface is built on previous work here: [https://github.com/xbgmsharp/ipxe-buildweb](https://github.com/xbgmsharp/ipxe-buildweb)
+## Что
+Основанный на web пользовательский интерфейс предоставляет возможность выбрать различные опции сборки iPXE, указать встроенный скрипт, и т.д., после чрго собрать и скачать файл.
 
-## What
-A web-based user interface that provide a way for the user to select any relevant iPXE build options, specify any embedded script, etc, and then construct and download the appropriate file.
-
-## How
+## Как
 The user interface, is using HTML, CSS as well as Javascript (jQuery) and a suitable server-side language (Perl).
 All GUI options (git version/nics list/compile options) are generated from the iPXE source code dynamically.
 The build.fcgi script written in Perl by Michael Brown.
