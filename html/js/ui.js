@@ -15,7 +15,7 @@ $(document).ready(function() {
 
         $.getJSON("versions.json", null, function(data) {
                 //alert(data[0]);
-                var git = '<p><h2 class="wizard-header">Generating iPXE build image version ' + data[0] + '</h2></p>';
+                var git = '<p><h2 class="wizard-header">Генерация iPXE. Версия сборки ' + data[0] + '</h2></p>';
                 $("#gitabbrev").html(git);
                 var options = "<option value='master' selected>master</option>";
                 for (var i = 0; i < data.length; i++) {
