@@ -144,7 +144,7 @@ $(document).ready(function() {
 
         $("#gitrevision").change(function(){
                 var gitversion = $("#gitrevision").val();
-                var git = '<p><h2 class="wizard-header">Generating iPXE build image version ' + gitversion + '</h2></p>';
+                var git = '<p><h2 class="wizard-header">Генерация iPXE. Версия сборки ' + gitversion + '</h2></p>';
                 $("#gitabbrev").html(git);
         });
 
@@ -236,7 +236,7 @@ $(document).ready(function() {
                                     binary = $("#pci_vendor_code").val().toLowerCase() + $("#pci_device_code").val().toLowerCase() + "." + binary;
                                 } else {
                                     $("#pci_roms_id_error").css({'display': 'inline'});
-                                    $("#pci_roms_id_error").html("Invalid or unsupported pci_vendor_code or pci_device_code <br/>");
+                                    $("#pci_roms_id_error").html("Неправильный или неподдерживаемый pci_vendor_code или pci_device_code <br/>");
                                     return;
                                 }
                         }
@@ -403,9 +403,9 @@ $(document).ready(function() {
                                 onOpen: function() {
 					var baseURI = document.baseURI.replace(window.location.search,'').replace(/index\.html$/,'');
 					var config = buildcfg();
-					var data = "<h2>Direct buildcfg URL</h2><p>Use this URL to directly retreive your binary for later use:</p>";
+					var data = "<h2>Прямая ссылка на сборку</h2><p>Используйте эту ссылку, чтоб получить свой образ в следующий раз:</p>";
 					data += "<br/>" + baseURI + config;
-					data += "<br/><h2>Editable Configuration URL</h2><p>Use this URL to adjust your binary's setup:</p>";
+					data += "<br/><h2>Ссылка на конфигурацию</h2><p>Используйте эту ссылку, чтоб изменить параметры сборки:</p>";
 					var editcfg = config.replace(/^[^?]*\?/,'?');
 					data += "<br/>" + baseURI + editcfg;
 			                content.html(data);
@@ -425,7 +425,7 @@ $(document).ready(function() {
 
                         // Only process text or unknow file type.
                         if (!file.type.match('text*') && file.type != "") {
-                                document.getElementById('list').innerHTML = '<ul style="background-color: red;"> Only text file are supported </ul>';
+                                document.getElementById('list').innerHTML = '<ul style="background-color: red;"> Поддерживаются только текстовые файлы </ul>';
                                 return;
                         }
 
@@ -444,7 +444,7 @@ $(document).ready(function() {
                                                 $("#embed").val(content);
                                                 if (content.indexOf("#!ipxe") === -1) {
                                                         document.getElementById('list').innerHTML =
-                                                                '<ul style="background-color: red;"> Not a iPXE script </ul>';
+                                                                '<ul style="background-color: red;"> Не является скриптом iPXE </ul>';
                                                 }
                                         };
                         })(file);
@@ -468,7 +468,7 @@ $(document).ready(function() {
 
                                 // Only process textfiles.
                                 if (!file.type.match('text*') && file.type != "") {
-                                        document.getElementById('list').innerHTML = '<ul style="background-color: red;"> Only text file are supported </ul>';
+                                        document.getElementById('list').innerHTML = '<ul style="background-color: red;"> Поддерживаются только текстовые файлы </ul>';
                                         return;
                                 }
 
@@ -487,7 +487,7 @@ $(document).ready(function() {
                                                         $("#embed").val(content);
                                                         if (content.indexOf("#!ipxe") === -1) {
                                                                 document.getElementById('list').innerHTML =
-                                                                        '<ul style="background-color: red;"> Not a iPXE script </ul>';
+                                                                        '<ul style="background-color: red;"> Не является скриптом iPXE </ul>';
                                                         }
                                                 };
                                 })(file);
