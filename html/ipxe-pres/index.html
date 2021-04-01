@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>iPXE Presentation</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<!--
+		To apply styles to the certain slides
+		set slide ID to get needed elements
+	-->
+	<style>
+		#Cover h2 {
+			margin:65px 0 0;
+			color:#00CCCC;
+			text-align:center;
+			font-size:70px;
+			}
+		#Cover p {
+			margin:10px 0 0;
+			text-align:center;
+			color:#00CCCC;
+			font-style:italic;
+			font-size:20px;
+			}
+		#Cover p a {
+			color:#00CCCC;
+			}
+		#BuildOptions {
+			background:#FFF url(pictures/buildoptions.png) 700px 160px no-repeat;
+			}
+		#Scripting h2, #Wimboot h2, #More h2, #Next h2, #Support h2 {
+			position:absolute;
+			bottom:100px;
+			padding:0 80px;
+			background:#E34C00;
+			color:#FFF;
+			font-size:75px;
+			};
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>iPXE Presentation</h1>
+		<p><a href="https://github.com/xbgmsharp" target="_blank">Francois Lacroix</a>, <a href="https://ipxe.pcserviceburgas.com" target="_blank">ROM o matic</a></p>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>iPXE Presentation</h2>
+		<p>Brought you by <a href="https://ipxe.pcserviceburgas.com" target="_blank">Serviz za komputri Burgas</a></p>
+		<img src="pictures/cover.png" alt="">
+	</div></section>
+	<section class="slide"><div>
+		<h2>iPXE Key Features</h2>
+		<ul style="font-size:20px;">
+			<li>boot from a web server via HTTP(s)</li>
+			<li>boot from an iSCSI SAN</li>
+			<li>boot from a Fibre Channel SAN via FCoE</li>
+			<li>boot from an AoE SAN</li>
+			<li>control the boot process with a script</li>
+		</ul>
+		<p class="note">iPXE is free, open-source software licensed under the GNU GPL.</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Quick start</h2>
+		<p>The easiest way to start experimenting with iPXE is to use the <a href="http://rom-o-matic.eu/" target="_blank">bootable ISO image</a>, boot from it. You should see the following welcome banner:
+		<img src="pictures/banner.png" alt="" class="center"><br/>
+You can boot something over the network. Unlike a traditional PXE ROM, iPXE is able to boot over a wide area network such as the Internet. If the machine you are testing is connected to the Internet, you can boot the iPXE <a href="https://boot.ipxe.org/demo/boot.php" target="_blank">demonstration image</a>.</p>
+	</div></section>
+	<section class="slide" id="BuildOptions"><div>
+		<h2>All Kind of build/boot options</h2>
+		<ol>
+			<li>Using a boot CD-ROM or USB key</li>
+			<li>Chainloading from an existing PXE ROM (DHCP)</li>
+			<li>Replacing an existing PXE ROM
+				<ul>
+					<li>Large ROM images support</li>
+					<li>EFI ROM images support</li>
+				</ul>
+			</li>
+		</ol>
+	</div></section>
+	<section class="slide cover" id="Scripting"><div>
+		<h2>Scripting</h2>
+		<img src="pictures/Matrix.jpg" alt="">
+	</div></section>
+	<section class="slide" id="Scripts"><div>
+		<h2>Script Sample</h2>
+		<pre>			<code>!#ipxe</code>
+			<code>dhcp || goto retry_dhcp</code>
+			<code>set base-url ${boot-url}/ubuntu-12.04-server-amd64/install</code>
+			<code>kernel ${base-url}/netboot/ubuntu-installer/amd64/linux</code>
+			<code>initrd ${base-url}/netboot/ubuntu-installer/amd64/initrd.gz</code>
+			<code>boot || goto failed</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Scripting</h2>
+		<ul>
+			<li>Flow control
+				<ul>
+					<li>You can use the goto command to jump to a predefined script label.</li>
+				</ul>
+			</li>
+			<li>Error handling</li>
+			<li>An iPXE script does not have to be a static text file.
+				 <ul>
+					<li>You could direct iPXE to boot from the URL.</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="note">See more sample on <a href="https://gist.github.com/robinsmidsrod/2234639"  target="_blank">robinsmidsrod gist.</a></p>
+	</div></section>
+	<section class="slide cover" id="Wimboot"><div>
+		<h2>WinPE boot</h2>
+		<img src="pictures/wimboot.png" alt="">
+	</div></section>
+	<section class="slide"><div>
+		<h2>WinPE boot</h2>
+		<ul>
+			<li>Windows via HTTP
+				<ul>
+					<li>Using iPXE and wimboot, you can boot into Windows PE via HTTP.</li>
+				</ul>
+			</li>
+			<li>Faster
+				<ul>
+					<li>Booting Windows PE via HTTP is much faster than using traditional TFTP-based methods such as Windows Deployment Services (WDS).</li>
+				</ul>
+			</li>
+		</ul>
+	</div></section>
+	<section class="slide cover" id="Next"><div>
+		<h2>Pending Feature</h2>
+		<img src="pictures/future.jpg" alt="">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Pending Feature</h2>
+		<ul style="font-size:16px;">
+			<li>IPv6 support
+				<ul>
+					<li><a href="https://github.com/ipxe/ipxe/pull/6" target="_blank">Pull request waiting</a>, not merge, why?</li>
+				</ul>
+			</li>
+			<li>EFI support
+				<ul>
+					<li><a href="http://lists.ipxe.org/pipermail/ipxe-devel/2012-September/001825.html" target="_blank">EFI snponly can't detect network device</a>, patch available, not merge, why?</li>
+					<li><a href="http://ipxe.org/efi/vision" target="_blank">EFI Vision</a></li>
+				</ul>
+			</li>
+			<li>Pull request pending on Github
+				<ul>
+					<li><a href="https://github.com/ipxe/ipxe/pulls?direction=desc&page=1&sort=created&state=open" target="_blank">Unmerge pull request waiting</a></li>
+				</ul>
+			</li>
+			<li>NFS support
+				<ul>
+					<li><a href="http://ipxe.org/gsoc/nfs">NFS support from GSoC 2012</a>, pending clean up and merge, update?</li>
+				</ul>
+			</li>
+			<li>No official release since gpxe forked
+				<ul>
+					<li>Unneed as master branch is a stable branch, lack of information</li>
+					<li>Generate confusion as a version number is show in the boot banner</li>
+				</ul>
+			</li>
+	</div></section>
+	<section class="slide cover" id="More"><div>
+		<h2>Learn More</h2>
+		<img src="pictures/more_innovation.jpg" alt="">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Learn more</h2>
+		<ul>
+			<li>Read more on <a href="https://ipxe.org/" target="_blank">ipxe.org</a>.</li>
+			<li>Test iPXE build easily using <a href="https://rom-o-matic.eu/" target="_blank">rom-o-matic.eu</a>.</li>
+			<li>Learn more about Networkboot on <a href="http://networkboot.org/" target="_blank">networkboot.org</a>.</li>
+		</ul>
+	</div></section>
+	<section class="slide cover" id="Support"><div>
+		<h2>Community</h2>
+		<img src="pictures/support.jpg" alt="">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Open Source Community</h2>
+		<ul>
+			<li>You can discuss general iPXE issues in the iPXE <a href="http://forum.ipxe.org/" target="_blank">discussion forum</a>.</li>
+			<li><a href="https://lists.ipxe.org/mailman/listinfo/ipxe-devel" target="_blank">Subscribe</a> to the mailing list, or view the <a href="http://lists.ipxe.org/pipermail/ipxe-devel/" target="_blank">archive of past messages</a>.</li>
+			<li>Real-time help is often available on IRC on the #ipxe channel on the Freenode IRC network or you can use the Freenode <a href="https://webchat.freenode.net/?channels=#ipxe">web chat interface</a>.</li>
+			<li><a href="https://plus.google.com/communities/103400740116727487788" target="_blank">Goole+ Network booting Community</a>
+		</ul>
+	</div></section>
+	<!--
+		To hide progress bar from entire presentation
+		just remove progress element.
+	-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+</body>
+</html>
