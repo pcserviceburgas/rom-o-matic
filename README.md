@@ -1,8 +1,8 @@
 iPXE Prebuilt binary web interface [![Build Status](https://travis-ci.com/lps-rocks/rom-o-matic.svg?branch=master)](https://travis-ci.com/lps-rocks/rom-o-matic)
 =====
 
-## Demo
-You can access a live version here: [rom-o-matic.dev](https://rom-o-matic.dev). Check the [server status](https://status.rom-o-matic.dev) page to check if the demo server is down. The demo server is rebuilt nightly and will be hosted indefinitely. This project is attempting to revive previous domains, rom-o-matic.eu and rom-o-matic.net as well.
+## Демонстрация
+Вы можете посмотреь, как выглядит данный проект на сайте: [ipxe.pcserviceburgas.com](https://ipxe.pcserviceburgas.com/). Этот проект является русификацией действующего проекта [rom-o-matic.dev](https://github.com/lps-rocks/rom-o-matic)
 
 ## Why
 A web interface for building iPXE binaries. Many users would prefer to be able to download prebuilt binary versions of iPXE, rather than building it from source.
