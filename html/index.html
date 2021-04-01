@@ -10,11 +10,11 @@
  * ================================================================================
 -->
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="ru">
 	<head>
-		<title>ROM-o-matic | Generate iPXE images | open source network boot firmware</title>
+		<title>ROM-o-matic | Генератор iPXE образов | open source ПО для загрузки по сети</title>
 		<meta name="keywords" content="rom, etherboot, ipxe, open source, rom-o-matic"/>
-		<meta name="description" content="a dynamic iPXE and Etherboot network boot image generator"/>
+		<meta name="description" content="динамический генератор загрузочных образов iPXE"/>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 		<link rel="stylesheet" type="text/css" href="css/ui.css"/>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -24,7 +24,7 @@
 	</head>
 	<body>
 		<h1>
-			<a href="http://ipxe.org" title="iPXE website" target="_blank">Generate iPXE images</a> | <a href="#" id="about" title="About this website">About</a>
+			<a href="http://ipxe.org" title="iPXE website" target="_blank">Официальный сайт iPXE</a> | <a href="#" id="about" title="About this website">Что это?</a>
 		</h1>
 		<div id="about_pop_up"><a class="b-close">x</a><div class="content"></div></div>
 		<div id="wrapper">
@@ -35,27 +35,27 @@
 
 			<div id="formtype" class="formtype">
 				<p>
-					This wizard will guide you through the customized iPXE image generation.<br/>
+					На данной странице Вы сможете создать собственные iPXE образы.<br/>
 				</p>
 				<input type="radio" name="wizardtype" value="standard" id="standard" checked />
-				<label for="standard">Standard, for most common use</label>
+				<label for="standard">Стандартные. Для большинства пользователей</label>
 				<br/>
 				<input type="radio" name="wizardtype" value="advanced" id="advanced" />
-				<label for="advanced">Advanced, for experienced users</label>
+				<label for="advanced">Расширенные. Для продвинутых пользователей</label>
 			</div>
 
 			<div id="divstandard" class="divstandard">
 			<div id="ofmtstd" class="ofmstd">
 				<div class="spacer">
-					<h2 class="wizard-header">Choose an output format:</h2>
+					<h2 class="wizard-header">Выберите формат образа:</h2>
 					<p>
 						<a class="help" href="http://ipxe.org/download#choosing_what_to_build" target="_blank">Help me choose</a>
 					</p>
 					<select id="outputformatstd" name="outputformatstd">
 						<option value='-' selected>-</option>
-						<option value="bin/ipxe.iso">ISO bootable image (.iso)</option>
-						<option value="bin/ipxe.usb">USB Keychain disk image (.usb)</option>
-						<option value="bin/undionly.kpxe">UNDI only (.kpxe)</option>
+						<option value="bin/ipxe.iso">Загрузочный ISO образ (.iso)</option>
+						<option value="bin/ipxe.usb">Образ загрузочного USB диска (.usb)</option>
+						<option value="bin/undionly.kpxe">Только UNDI (.kpxe)</option>
 						<option value="bin-x86_64-efi/snponly.efi">EFI x86_64 snponly (.efi)</option>
 					</select>
 				</div>
@@ -65,32 +65,31 @@
 			<div id="divadvanced" class="divadvanced" style="display: none">
 			<div id="ofmtadv" class="ofmadv">
 				<div class="spacer">
-					<h2 class="wizard-header">Choose an output format:</h2>
+					<h2 class="wizard-header">Выберите формат образа:</h2>
 					<p>
-						<a class="help" href="http://ipxe.org/download#choosing_what_to_build" target="_blank">Help me choose</a>
+						<a class="help" href="http://ipxe.org/download#choosing_what_to_build" target="_blank">Помогите мне выбрать (English)</a>
 					</p>
 					<select id="outputformatadv" name="outputformatadv">
 						<option value='-' selected>-</option>
-						<option value="bin/ipxe.dsk">Floppy bootable image (.dsk)</option>
-						<option value="bin/ipxe.sdsk">SYSLINUX-based bootable floppy image (.sdsk)</option>
-						<option value="bin/ipxe.iso">ISO bootable image (.iso)</option>
-						<option value="bin/ipxe.liso">ISO bootable image with legacy floppy emulation (.liso)</option>
-						<option value="bin/ipxe.lkrn">Linux kernel (SYSLINUX/GRUB/LILO) loadable image (.lkrn)</option>
-						<option value="bin/ipxe.usb">USB Keychain disk image (.usb)</option>
+						<option value="bin/ipxe.dsk">Образ загрузочной дискеты (.dsk)</option>
+						<option value="bin/ipxe.sdsk">Образ загрузочной дискеты на базе SYSLINUX (.sdsk)</option>
+						<option value="bin/ipxe.iso">Загрузочный ISO образ (.iso)</option>
+						<option value="bin/ipxe.lkrn">Linux kernel (SYSLINUX/GRUB/LILO) загружаемый образ (.lkrn)</option>
+						<option value="bin/ipxe.usb">Образ загрузочного USB диска (.usb)</option>
 						<option value="--">------------------</option>
-						<option value="bin/rom">ROM binary (flashable) image (.rom)</option>
-						<option value="bin/hrom">ROM binary (flashable) for problem PMM BIOSES (.hrom)</option>
-						<option value="bin/mrom">ROM binary (flashable) for larger ROM images (.mrom)</option>
-						<option value="bin-i386-efi/efirom">EFI 32-bit ROM binary (flashable) image (.efirom)</option>
-						<option value="bin-x86_64-efi/efirom">EFI 64-bit ROM binary (flashable) image (.efirom)</option>
+						<option value="bin/rom">Бинарный ROM образ (прошивка) (.rom)</option>
+						<option value="bin/hrom">Бинарный ROM образ (прошивка) для проблемных PMM BIOS (.hrom)</option>
+						<option value="bin/mrom">Бинарный ROM образ (прошивка) для больших ROM образов (.mrom)</option>
+						<option value="bin-i386-efi/efirom">Бинарный ROM образ EFI 32-bit (прошивка) (.efirom)</option>
+						<option value="bin-x86_64-efi/efirom">Бинарный ROM образ EFI 64-bit (прошивка) (.efirom)</option>
 						<option value="--">------------------</option>
-						<option value="bin/ipxe.pxe">PXE bootstrap loader image [Unload PXE stack] (.pxe)</option>
-						<option value="bin/ipxe.kpxe">PXE bootstrap loader keep [Keep PXE stack method 1] (.kpxe)</option>
-						<option value="bin/ipxe.kkpxe">PXE bootstrap loader keep [Keep PXE stack method 2] (.kkpxe)</option>
-						<option value="bin/ipxe.kkkpxe">PXE bootstrap loader keep [Keep PXE stack method 3] (.kkkpxe)</option>
+						<option value="bin/ipxe.pxe">Файл загрузки через PXE [Выгрузить PXE стек] (.pxe)</option>
+						<option value="bin/ipxe.kpxe">Файл загрузки через PXE [Сохранить PXE подключение метод 1] (.kpxe)</option>
+						<option value="bin/ipxe.kkpxe">Файл загрузки через PXE [Сохранить PXE подключение метод 2] (.kkpxe)</option>
+						<option value="bin/ipxe.kkkpxe">Файл загрузки через PXE [Сохранить PXE подключение метод 3] (.kkkpxe)</option>
 						<option value="--">------------------</option>
-						<option value="bin-i386-efi/ipxe.efi">EFI PXE bootstrap 32-bit (.efi)</option>
-						<option value="bin-x86_64-efi/ipxe.efi">EFI PXE bootstrap 64-bit (.efi)</option>
+						<option value="bin-i386-efi/ipxe.efi">EFI Файл загрузки через PXE 32-bit (.efi)</option>
+						<option value="bin-x86_64-efi/ipxe.efi">EFI Файл загрузки через PXE 64-bit (.efi)</option>
 					</select>
 				</div>
 			</div>
