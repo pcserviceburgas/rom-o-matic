@@ -1,17 +1,5 @@
-<!--
- * ================================================================================
- * Dynamic iPXE image generator
- *
- * Copyright (C) 2021 Alexander Sorokin. Based on work of James DeVincentis.
- * Copyright (C) 2020 James DeVincentis. Based on work of Francois Lacroix. 
- * Copyright (C) 2012-2019 Francois Lacroix. All Rights Reserved.
- * Website: http://ipxe.org, https://github.com/xbgmsharp/ipxe-buildweb
- *     https://github.com/lps-rocks/rom-o-matic
- * License: GNU General Public License version 3 or later; see LICENSE.txt
- * ================================================================================
--->
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="ru">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="ru">
 	<head>
 		<title>ROM-o-matic | Генератор iPXE образов | open source ПО для загрузки по сети</title>
 		<meta name="keywords" content="rom, etherboot, ipxe, open source, rom-o-matic"/>
@@ -24,80 +12,87 @@
 		<script type="text/javascript" src="js/ui.js"></script>
 	</head>
 	<body>
-		<h1>
-			<a href="http://ipxe.org" title="iPXE website" target="_blank">Официальный сайт iPXE</a> | <a href="#" id="about" title="About this website">Что это?</a>
-		</h1>
+		<h2>
+			<a href="http://ipxe.org" title="iPXE website" target="_blank">Официальный сайт iPXE</a> | <a href="#" id="about" title="Об этом сайте">Что это?</a>
+		</h2>
 		<div id="about_pop_up"><a class="b-close">x</a><div class="content"></div></div>
 		<div id="wrapper">
 		<form action="#" enctype="multipart/form-data" method="post" id="ipxeimage" name="ipxeimage">
 
 			<div id="gitabbrev" class="gitabbrev">
 			</div>
+<section id="banner">
+				<div class="inner">
+					<div class="logo"></div>
+					<div class="content">
+						<div id="formtype" class="formtype">
+							<h2 class="major">На данной странице Вы сможете создать собственные iPXE образы.<br/></h2>
+							<input type="radio" name="wizardtype" value="standard" id="standard" checked />
+							<label for="standard">Стандартные. Для большинства пользователей</label>
+							<br/>
+							<input type="radio" name="wizardtype" value="advanced" id="advanced" />
+							<label for="advanced">Расширенные. Для продвинутых пользователей</label>
+						</div>
 
-			<div id="formtype" class="formtype">
-				<p>
-					На данной странице Вы сможете создать собственные iPXE образы.<br/>
-				</p>
-				<input type="radio" name="wizardtype" value="standard" id="standard" checked />
-				<label for="standard">Стандартные. Для большинства пользователей</label>
-				<br/>
-				<input type="radio" name="wizardtype" value="advanced" id="advanced" />
-				<label for="advanced">Расширенные. Для продвинутых пользователей</label>
-			</div>
+				<div class="inner">
+						<div id="divstandard" class="divstandard">
+						<div id="ofmtstd" class="ofmstd">
+							<div class="spacer">
+								<h2 class="major">Выберите формат образа:</h2>
+								<p>
+									<a class="help" href="http://ipxe.org/download#choosing_what_to_build" target="_blank">Помогите мне выбрать (Eng)</a>
+								</p>
+								<select id="outputformatstd" name="outputformatstd">
+									<option value='-' selected>-</option>
+									<option value="bin/ipxe.iso">Загрузочный ISO образ (.iso)</option>
+									<option value="bin/ipxe.usb">Образ загрузочного USB диска (.usb)</option>
+									<option value="bin/undionly.kpxe">Только UNDI (.kpxe)</option>
+									<option value="bin-x86_64-efi/snponly.efi">EFI x86_64 snponly (.efi)</option>
+								</select>
+							</div>
+						</div>
+						</div> <!-- End STD form -->
 
-			<div id="divstandard" class="divstandard">
-			<div id="ofmtstd" class="ofmstd">
-				<div class="spacer">
-					<h2 class="wizard-header">Выберите формат образа:</h2>
-					<p>
-						<a class="help" href="http://ipxe.org/download#choosing_what_to_build" target="_blank">Помогите мне выбрать (Eng)</a>
-					</p>
-					<select style="font-size:16px;" id="outputformatstd" name="outputformatstd">
-						<option value='-' selected>-</option>
-						<option value="bin/ipxe.iso">Загрузочный ISO образ (.iso)</option>
-						<option value="bin/ipxe.usb">Образ загрузочного USB диска (.usb)</option>
-						<option value="bin/undionly.kpxe">Только UNDI (.kpxe)</option>
-						<option value="bin-x86_64-efi/snponly.efi">EFI x86_64 snponly (.efi)</option>
-					</select>
+						<div id="divadvanced" class="divadvanced" style="display: none">
+						<div id="ofmtadv" class="ofmadv">
+							<div class="spacer">
+								<h2  class="major">Выберите формат образа:</h2>
+								<p>
+									<a class="help" href="http://ipxe.org/download#choosing_what_to_build" target="_blank">Помогите мне выбрать (Eng)</a>
+								</p>
+								<select id="outputformatadv" name="outputformatadv">
+									<option value='-' selected>-</option>
+									<option value="bin/ipxe.dsk">Образ загрузочной дискеты (.dsk)</option>
+									<option value="bin/ipxe.sdsk">Образ загрузочной дискеты на базе SYSLINUX (.sdsk)</option>
+									<option value="bin/ipxe.iso">Загрузочный ISO образ (.iso)</option>
+									<option value="bin/ipxe.lkrn">Linux kernel (SYSLINUX/GRUB/LILO) загружаемый образ (.lkrn)</option>
+									<option value="bin/ipxe.usb">Образ загрузочного USB диска (.usb)</option>
+									<option value="--">------------------</option>
+									<option value="bin/rom">Бинарный ROM образ (прошивка) (.rom)</option>
+									<option value="bin/hrom">Бинарный ROM образ (прошивка) для проблемных PMM BIOS (.hrom)</option>
+									<option value="bin/mrom">Бинарный ROM образ (прошивка) для больших ROM образов (.mrom)</option>
+									<option value="bin-i386-efi/efirom">Бинарный ROM образ EFI 32-bit (прошивка) (.efirom)</option>
+									<option value="bin-x86_64-efi/efirom">Бинарный ROM образ EFI 64-bit (прошивка) (.efirom)</option>
+									<option value="--">------------------</option>
+									<option value="bin/ipxe.pxe">Файл загрузки через PXE [Выгрузить PXE стек] (.pxe)</option>
+									<option value="bin/ipxe.kpxe">Файл загрузки через PXE [Сохранить PXE подключение метод 1] (.kpxe)</option>
+									<option value="bin/ipxe.kkpxe">Файл загрузки через PXE [Сохранить PXE подключение метод 2] (.kkpxe)</option>
+									<option value="bin/ipxe.kkkpxe">Файл загрузки через PXE [Сохранить PXE подключение метод 3] (.kkkpxe)</option>
+									<option value="--">------------------</option>
+									<option value="bin-i386-efi/ipxe.efi">EFI Файл загрузки через PXE 32-bit (.efi)</option>
+									<option value="bin-x86_64-efi/ipxe.efi">EFI Файл загрузки через PXE 64-bit (.efi)</option>
+								</select>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			</div> <!-- End STD form -->
 
-			<div id="divadvanced" class="divadvanced" style="display: none">
-			<div id="ofmtadv" class="ofmadv">
-				<div class="spacer">
-					<h2 class="wizard-header">Выберите формат образа:</h2>
-					<p>
-						<a class="help" href="http://ipxe.org/download#choosing_what_to_build" target="_blank">Помогите мне выбрать (Eng)</a>
-					</p>
-					<select style="font-size:16px;" id="outputformatadv" name="outputformatadv">
-						<option value='-' selected>-</option>
-						<option value="bin/ipxe.dsk">Образ загрузочной дискеты (.dsk)</option>
-						<option value="bin/ipxe.sdsk">Образ загрузочной дискеты на базе SYSLINUX (.sdsk)</option>
-						<option value="bin/ipxe.iso">Загрузочный ISO образ (.iso)</option>
-						<option value="bin/ipxe.lkrn">Linux kernel (SYSLINUX/GRUB/LILO) загружаемый образ (.lkrn)</option>
-						<option value="bin/ipxe.usb">Образ загрузочного USB диска (.usb)</option>
-						<option value="--">------------------</option>
-						<option value="bin/rom">Бинарный ROM образ (прошивка) (.rom)</option>
-						<option value="bin/hrom">Бинарный ROM образ (прошивка) для проблемных PMM BIOS (.hrom)</option>
-						<option value="bin/mrom">Бинарный ROM образ (прошивка) для больших ROM образов (.mrom)</option>
-						<option value="bin-i386-efi/efirom">Бинарный ROM образ EFI 32-bit (прошивка) (.efirom)</option>
-						<option value="bin-x86_64-efi/efirom">Бинарный ROM образ EFI 64-bit (прошивка) (.efirom)</option>
-						<option value="--">------------------</option>
-						<option value="bin/ipxe.pxe">Файл загрузки через PXE [Выгрузить PXE стек] (.pxe)</option>
-						<option value="bin/ipxe.kpxe">Файл загрузки через PXE [Сохранить PXE подключение метод 1] (.kpxe)</option>
-						<option value="bin/ipxe.kkpxe">Файл загрузки через PXE [Сохранить PXE подключение метод 2] (.kkpxe)</option>
-						<option value="bin/ipxe.kkkpxe">Файл загрузки через PXE [Сохранить PXE подключение метод 3] (.kkkpxe)</option>
-						<option value="--">------------------</option>
-						<option value="bin-i386-efi/ipxe.efi">EFI Файл загрузки через PXE 32-bit (.efi)</option>
-						<option value="bin-x86_64-efi/ipxe.efi">EFI Файл загрузки через PXE 64-bit (.efi)</option>
-					</select>
-				</div>
-			</div>
 
+
+	<div class="inner">
 			<div id="rom" class="rom" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Введите информацию о NIC устройстве:</h2>
+					<h2  class="major">Введите информацию о NIC устройстве:</h2>
 					<p>
 						Вы выбрали бинарный ROM образ в качестве формата. Для соответствия образа
 						Вашему NIC устройству, пожалуйста, введите его PCI VENDOR CODE и PCI DEVICE CODE.
@@ -105,25 +100,29 @@
 					<a class="help" href="http://ipxe.org/howto/romburning" target="_blank">Информация о том, как узнать NIC PCI ID (Eng)</a>:<br/>
 					<label for="pci_vendor_code" form="ipxeimage">PCI VENDOR CODE: <input type="text" size="6" maxlength="4" value="" id="pci_vendor_code" name="pci_vendor_code" placeholder="8086"/></label>
 					<label for="pci_device_code" form="ipxeimage">PCI DEVICE CODE: <input type="text" size="6" maxlength="4" value="" id="pci_device_code" name="pci_device_code" placeholder="10de"/></label>
-					<p>
-						<div id="pci_roms_id_error" class="error" style="display: none">
-						</div>
-						iPXE поддерживает не все PCI ID для поддерживаемых NIC.
-					</p>
+
+						<p>
+							<div id="pci_roms_id_error" class="error" style="display: none">
+							</div>
+							iPXE поддерживает не все PCI ID для поддерживаемых NIC.
+					 </p>
 				</div>
 			</div>
 
 			<div id="iface" class="iface" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Выберите тип NIC:</h2>
-					<select style="font-size:16px;" name="nics" id="nics">
+					<h2  class="major">Выберите тип NIC:</h2>
+					<select name="nics" id="nics">
 					</select>
 				</div>
 			</div>
 
+
+
+	<div class="inner">
 			<div id="config" class="config" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Изменение настроек конфигурации образа:</h2>
+					<h2  class="major">Изменение настроек конфигурации образа:</h2>
 					<a class="help" href="http://ipxe.org/buildcfg" target="_blank">Настройки кофигурации сборки</a><br/>
 					<div id="options" class="options">
 					</div>
@@ -131,9 +130,11 @@
 			</div>
 			</div> <!-- End ADV form -->
 
+
+
 			<div id="embedded" class="embedded" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Встроенный скрипт:</h2>
+					<h2  class="major">Встроенный скрипт:</h2>
 					<a class="help" href="http://ipxe.org/embed" target="_blank">Прочитайте о встроенных скриптах (Eng)</a><br/>
 					<br/>Вставьте Ваш скрипт:<br/>
 					<textarea id="embed" name="embed" rows="4" cols="60" placeholder="#!ipxe"></textarea>
@@ -147,7 +148,7 @@
 
 			<div id="debug" class="debug" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Отладка сборки:</h2>
+					<h2  class="major">Отладка сборки:</h2>
 					<a class="help" href="http://ipxe.org/download#debug_builds" target="_blank">Прочитайте о возможностях отладки (Eng)</a><br/>
 					Включить отладку: <input id="setdebug" name="setdebug" type="text" value="" placeholder="scsi:3,iscsi"/><br/>
 				</div>
@@ -155,7 +156,7 @@
 
 			<div id="gitversion" class="gitversion" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Какая ревизия?</h2>
+					<h2  class="major">Какая ревизия?</h2>
 					<a class="help" href="http://git.ipxe.org/ipxe.git/shortlog" target="_blank">Прочитайте о ревизиях GIT (Eng)n</a><br/>
 					По умолчанию главная (рекомендуется)
 					<select style="font-size:16px;" id="gitrevision" name="gitrevision">
@@ -165,7 +166,7 @@
 
 			<div id="build" class="build" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Готовы собрать?</h2>
+					<h2  class="major">Готовы собрать?</h2>
 					<div align="center">
 						<input class="buildbutton" name="proceed" id="proceed" type="submit" value="Сборка!" />
 						<input class="savebutton" name="save" id="save" type="button" value="Сохранить конфигурацию" />
@@ -175,18 +176,22 @@
 
 			<div id="result" class="result" style="display: none">
 				<div class="spacer">
-					<h2 class="wizard-header">Сборка неуспешна</h2>
+					<h2  class="major">Сборка неуспешна</h2>
 					<div id="failed" class="неуспешно"></div>
 				</div>
 			</div>
 		</form>
 		</div>
+</section>
 
-		<div id="notes" class="notes">
-			<div class="spacer">
+		<a class="github" href="https://github.com/sebaxakerhtc/rom-o-matic/" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme_right_red.png" alt="Fork me on GitHub" title="Fork me on GitHub"></a>
+
+		<section id="footer">
+			<div class="inner">
+				<div class="spacer">
 				<h3>Информация:</h3>
 				<ul>
-					<li><a href="#" id="about2" title="About this website">Об этом сайте</a>.</li>
+					<li><a href="#" id="about2" title="Об этом сайте">Об этом сайте</a>.</li>
 					<li><a href="ipxe-pres/" title="iPXE presentation" target="_blank">iPXE презентация (Eng)</a>.</li>
 				</ul>
 			</div>
@@ -194,23 +199,16 @@
 				<h3>Заметки:</h3>
 				Для помощи и информации о том, как загрузить Вашу ОС с помощью iPXE или загрузки по сети (Eng):<br>
 				<ul>
-					<li>Посетите официальный сайт iPXE <a href="http://ipxe.org/" title="iPXE" target="_blank">http://ipxe.org/</a>.</li>
-					<li>Вы можете обсудить основные ошибки iPXE в обсуждении на <a href="http://forum.ipxe.org/" target="_blank">форуме iPXE</a>.</li>
-					<li><a href="https://lists.ipxe.org/mailman/listinfo/ipxe-devel" target="_blank">Подписаться</a> на рассылку, или просмотреть <a href="http://lists.ipxe.org/pipermail/ipxe-devel/" target="_blank">архив сообщений</a>.</li>
+					<li>Посетите официальный сайт iPXE <a class="help" href="http://ipxe.org/" title="iPXE" target="_blank">http://ipxe.org/</a>.</li>
+					<li>Вы можете обсудить основные ошибки iPXE в обсуждении на <a class="help" href="http://forum.ipxe.org/" target="_blank">форуме iPXE</a>.</li>
+					<li><a class="help" href="https://lists.ipxe.org/mailman/listinfo/ipxe-devel" target="_blank">Подписаться</a> на рассылку, или просмотреть <a class="help" href="http://lists.ipxe.org/pipermail/ipxe-devel/" target="_blank">архив сообщений</a>.</li>
 					<li>Помощь в режиме реального времени обычно протекает в IRC на канале #ipxe в Freenode IRC network.</li>
-					<li>Узнайте больше о сетевой загрузке на <a href="http://networkboot.org/" target="_blank">http://networkboot.org/</a>.</li>
-					<li>Уроки о загрузке PXE и меню утилит на <a href="http://brandon.penglase.net/index.php?title=PXE_Booting_and_Utilities_Menu" target="_blank">PXE Booting and Utilities Menu</a>.</li>
+					<li>Узнайте больше о сетевой загрузке на <a class="help" href="http://networkboot.org/" target="_blank">http://networkboot.org/</a>.</li>
+					<li>Уроки о загрузке PXE и меню утилит на <a class="help" href="http://brandon.penglase.net/index.php?title=PXE_Booting_and_Utilities_Menu" target="_blank">PXE Booting and Utilities Menu</a>.</li>
 				</ul>
 			</div>
 		</div>
-
-		<div id="W3valid">
-			<a href="http://validator.w3.org/check/referer" target="_blank"><img src="images/valid-html5-button.png" width="87" height="31" alt="HTML5 Valid" title="HTML5 Valid"></a>
-			<a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img src="images/vcss-blue.png" width="88" height="31" alt="CSS3 Valid" title="CSS3 Valid"></a>
-			<a href="http://www.w3.org/html/logo/" target="_blank"><img src="images/html5-badge-h-css3-semantics.png" width="83" height="32" alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics"></a>
-		</div>
-
-		<a class="github" href="https://github.com/sebaxakerhtc/rom-o-matic/" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme_right_red.png" alt="Fork me on GitHub" title="Fork me on GitHub"></a>
+</section>
 
 		<noscript>
 			<div class="noscript">

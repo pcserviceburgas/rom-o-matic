@@ -3,7 +3,7 @@
  * Dynamic iPXE image generator
  *
  * Copyright (C) 2021 Alexander Sorokin. Based on work of James DeVincentis.
- * Copyright (C) 2020 James DeVincentis. Based on work of Francois Lacroix. 
+ * Copyright (C) 2020 James DeVincentis. Based on work of Francois Lacroix.
  * Copyright (C) 2012-2019 Francois Lacroix. All Rights Reserved.
  * Website: http://ipxe.org, https://github.com/xbgmsharp/ipxe-buildweb
  *     https://github.com/lps-rocks/rom-o-matic
@@ -43,7 +43,7 @@ $(document).ready(function() {
         $.getJSON("options.json", null, function(custom) {
                 //alert(custom.length);
 
-                // List of subtitle of options	
+                // List of subtitle of options
                 var subtitle = new Object;
                 subtitle._CMD = 'Command-line commands to include:';
                 subtitle.NET_PROTO = 'Network protocols:';
@@ -77,7 +77,7 @@ $(document).ready(function() {
                 for (var i = 0; i < custom.length; i++) {
                         //alert(custom[i].name);
                         //alert(custom[i].description);
-                        for (var y in subtitle) 
+                        for (var y in subtitle)
                         {
                                 var regexp = new RegExp(y);
                                 var match = regexp.exec(custom[i].name);
@@ -217,12 +217,12 @@ $(document).ready(function() {
                 if (embed == "#!ipxe") { embed = ""; }
                 if (wizard == "standard")
                 { 	/* get values from elements on the STD wizard */
-                        bindir = $("#outputformatstd").val().split("/")[0]; 
+                        bindir = $("#outputformatstd").val().split("/")[0];
                         binary = $("#outputformatstd").val().split("/")[1];
                 }
                 else if (wizard == "advanced")
                 {	/* get values from elements on the ADV wizard */
-                        bindir = $("#outputformatadv").val().split("/")[0]; 
+                        bindir = $("#outputformatadv").val().split("/")[0];
                         binary = $("#outputformatadv").val().split("/")[1];
                         if (binary.indexOf("rom", binary.length - 3) !== -1)
                         {
@@ -359,7 +359,7 @@ $(document).ready(function() {
                 /* stop form from submitting normally */
                 event.preventDefault();
                 var url = buildcfg();
-                if (url) {                
+                if (url) {
                          window.location.href = url;
                 };
         });
@@ -405,10 +405,10 @@ $(document).ready(function() {
 					var baseURI = document.baseURI.replace(window.location.search,'').replace(/index\.html$/,'');
 					var config = buildcfg();
 					var data = "<h2>Прямая ссылка на сборку</h2><p>Используйте эту ссылку, чтоб получить свой образ в следующий раз:</p>";
-					data += "<br/>" + baseURI + config;
-					data += "<br/><h2>Ссылка на конфигурацию</h2><p>Используйте эту ссылку, чтоб изменить параметры сборки:</p>";
+					data += "<p>" + baseURI + config;
+					data += "<p><h2>Ссылка на конфигурацию</h2><p>Используйте эту ссылку, чтоб изменить параметры сборки:</p>";
 					var editcfg = config.replace(/^[^?]*\?/,'?');
-					data += "<br/>" + baseURI + editcfg;
+					data += "<p>" + baseURI + editcfg;
 			                content.html(data);
 				},
 				onClose: function() {
