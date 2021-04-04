@@ -16,7 +16,7 @@ $(document).ready(function() {
 
         $.getJSON("versions.json", null, function(data) {
                 //alert(data[0]);
-                var git = '<p><h2 class="wizard-header">Генерация iPXE. Версия сборки ' + data[0] + '</h2></p>';
+                var git = '<p><h2 class="major">Генерация iPXE. Версия сборки ' + data[0] + '</h2></p>';
                 $("#gitabbrev").html(git);
                 var options = "<option value='master' selected>master</option>";
                 for (var i = 0; i < data.length; i++) {
@@ -92,7 +92,7 @@ $(document).ready(function() {
                                 }
                                 else if (match != null && previous != y)
                                 {
-                                        listoptions += '<h3 class="wizard-option">'+ subtitle[y] + '</h3>'
+                                        listoptions += '<h3 class="major">'+ subtitle[y] + '</h3>'
                                         previous = y;
                                         break;
                                 }
@@ -145,7 +145,7 @@ $(document).ready(function() {
 
         $("#gitrevision").change(function(){
                 var gitversion = $("#gitrevision").val();
-                var git = '<p><h2 class="wizard-header">Генерация iPXE. Версия сборки ' + gitversion + '</h2></p>';
+                var git = '<p><h2 class="major">Генерация iPXE. Версия сборки ' + gitversion + '</h2></p>';
                 $("#gitabbrev").html(git);
         });
 
