@@ -107,10 +107,10 @@ $(document).ready(function() {
                                 listoptions += '<label for="' + custom[i].name + '">' + custom[i].name + ': <input type="text" size="6" placeholder="' + custom[i].description.replace('"', '') + '" value="' + custom[i].description.replace('"', '') + '" name="' + custom[i].file + '/' + custom[i].name +'" /> Default: ' + desc + '</label><br/><br/>';
 			} else if (custom[i].type == "define") {
                                 custom[i].href_help_name = '<a class="help_buildcfg" href="http://www.ipxe.org/buildcfg/' + custom[i].name + '" target="_blank">' + custom[i].name + '</a>';
-                                listoptions += '<label for="' + custom[i].name + '"><input type="checkbox" value="1" name="' + custom[i].file + '/' + custom[i].name + '" checked/>' + custom[i].href_help_name + ', ' + custom[i].description + '</label><br/><br/>';
+                                listoptions += '<div class="col-6 col-12-small"><input type="checkbox" value="1" id="' + custom[i].name + '" name="' + custom[i].file + '/' + custom[i].name + '" checked/><label for="' + custom[i].name + '">' + custom[i].href_help_name + ', ' + custom[i].description + '</label></div><br/><br/>';
                         } else if (custom[i].type == "undef") {
                                 custom[i].href_help_name = '<a class="help_buildcfg" href="http://www.ipxe.org/buildcfg/' + custom[i].name + '" target="_blank">' + custom[i].name + '</a>';
-                                listoptions += '<label for="' + custom[i].name + '"><input type="checkbox" value="0" name="' + custom[i].file + '/' + custom[i].name + '" />' + custom[i].href_help_name + ', ' + custom[i].description + '</label><br/><br/>';
+                                listoptions += '<div class="col-6 col-12-small"><input type="checkbox" value="0" id="' + custom[i].name + '" name="' + custom[i].file + '/' + custom[i].name + '" /><label for="' + custom[i].name + '">' + custom[i].href_help_name + ', ' + custom[i].description + '</label></div><br/><br/>';
                         } else if (custom[i].type == "input") {
                                 desc = custom[i].description;
                                 if (custom[i].name === custom[i].description) { desc = ""; }
