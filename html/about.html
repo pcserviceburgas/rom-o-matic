@@ -3,7 +3,7 @@
  * Dynamic iPXE image generator
  *
  * Copyright (C) 2021 Alexander Sorokin. Based on work of James DeVincentis.
- * Copyright (C) 2020 James DeVincentis. Based on work of Francois Lacroix. 
+ * Copyright (C) 2020 James DeVincentis. Based on work of Francois Lacroix.
  * Copyright (C) 2012-2019 Francois Lacroix. All Rights Reserved.
  * Website: http://ipxe.org, https://github.com/xbgmsharp/ipxe-buildweb
  *     https://github.com/lps-rocks/rom-o-matic
@@ -15,20 +15,28 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 		<title>О сайте</title>
+		<link rel="stylesheet" type="text/css" href="css/ui.css"/>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/jquery.bpopup.min.js"></script>
+		<script type="text/javascript" src="js/ui.js"></script>
 	</head>
 	<body>
+<section id="banner">
+	<div class="inner">
 		<h2>iPXE web сборка</h2>
 		<h3>Зачем</h3>
-		<a href="http://ipxe.org/gsoc#prebuilt_binary_web_interface" target="_blank">Web интерфейс с подготовленными образами</a>.
+		<a class="help" href="http://ipxe.org/gsoc#prebuilt_binary_web_interface" target="_blank">Web интерфейс с подготовленными образами</a>.
 		Многие пользователи предпочитают скачать подготовленные образы iPXE вместо того, чтоб собирать их из исходного кода.<br/>
 		<h3>Исходный код</h3>
-		<a href="https://github.com/sebaxakerhtc/rom-o-matic/" target="_blank">Исходный код доступен на Github</a>.<br/>
+		<a class="help" href="https://github.com/sebaxakerhtc/rom-o-matic/" target="_blank">Исходный код доступен на Github</a>.<br/>
 		Комментарии, вопросы, предложения и правки приветствуются!<br/>
-		Пожалуйста, сделайте fork и отправьте pull request или Вы можете создать <a href="https://github.com/sebaxakerhtc/rom-o-matic/issues" target="_blank">issue</a>.
+		Пожалуйста, сделайте fork и отправьте pull request или Вы можете создать <a class="help" href="https://github.com/sebaxakerhtc/rom-o-matic/issues" target="_blank">issue</a>.
 		<h3>Лицензия</h3>
 		<p>Данное ПО бесплатно; Вы можете передавать его и/или изменять его
-		по правилам <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU Стандартной общественной лицензии</a>
+		по правилам <a class="help" href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU Стандартной общественной лицензии</a>
 		опубликованной Free Software Foundation, версии 3, или (в Вашем случае) любой последующей версией.<br/>
 		</p>
+</section>
 	</body>
 </html>
