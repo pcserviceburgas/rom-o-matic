@@ -1,7 +1,19 @@
+<!--
+ * ================================================================================
+ * Dynamic iPXE image generator
+ *
+ * Copyright (C) 2021 Alexander Sorokin. Based on work of James DeVincentis.
+ * Copyright (C) 2020 James DeVincentis. Based on work of Francois Lacroix.
+ * Copyright (C) 2012-2019 Francois Lacroix. All Rights Reserved.
+ * Website: http://ipxe.org, https://github.com/xbgmsharp/ipxe-buildweb
+ *     https://github.com/lps-rocks/rom-o-matic
+ * License: GNU General Public License version 3 or later; see LICENSE.txt
+ * ================================================================================
+-->
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="ru">
 <head>
-	<title>iPXE Presentation</title>
+	<title>iPXE Презентация</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=792, user-scalable=no">
 	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
@@ -41,159 +53,124 @@
 </head>
 <body class="list">
 	<header class="caption">
-		<h1>iPXE Presentation</h1>
+		<h1>iPXE Презентация</h1>
 		<p><a href="https://github.com/xbgmsharp" target="_blank">Francois Lacroix</a>, <a href="https://ipxe.pcserviceburgas.com" target="_blank">ROM o matic</a></p>
 	</header>
 	<section class="slide cover" id="Cover"><div>
-		<h2>iPXE Presentation</h2>
-		<p>Brought you by <a href="https://ipxe.pcserviceburgas.com" target="_blank">Serviz za komputri Burgas</a></p>
+		<h2>iPXE Презентация</h2>
+		<p>Предоставлено от <a href="https://github.com/xbgmsharp/ipxe-buildweb" target="_blank">Francois Lacroix</a></p>
+		<p>Переведено от <a href="https://github.com/sebaxakerhtc/rom-o-matic" target="_blank">Александр Сорокин</a></p>
 		<img src="pictures/cover.png" alt="">
 	</div></section>
 	<section class="slide"><div>
-		<h2>iPXE Key Features</h2>
+		<h2>Ключевые возможности iPXE</h2>
 		<ul style="font-size:20px;">
-			<li>boot from a web server via HTTP(s)</li>
-			<li>boot from an iSCSI SAN</li>
-			<li>boot from a Fibre Channel SAN via FCoE</li>
-			<li>boot from an AoE SAN</li>
-			<li>control the boot process with a script</li>
+			<li>загрузка с веб-сервера по HTTP(s)</li>
+			<li>загрузка с iSCSI SAN</li>
+			<li>загрузка с Fibre Channel SAN через FCoE</li>
+			<li>загрузка с AoE SAN</li>
+			<li>контроль загрузки с помощью скрипта</li>
 		</ul>
-		<p class="note">iPXE is free, open-source software licensed under the GNU GPL.</p>
+		<p class="note">iPXE это бесплатное, open-source ПО, лицензированое GNU GPL.</p>
 	</div></section>
 	<section class="slide"><div>
-		<h2>Quick start</h2>
-		<p>The easiest way to start experimenting with iPXE is to use the <a href="http://rom-o-matic.eu/" target="_blank">bootable ISO image</a>, boot from it. You should see the following welcome banner:
+		<h2>Быстрый старт</h2>
+		<p>Самый простой путь начать эксперименты с iPXE, - это скачать <a href="https://ipxe.pcserviceburgas.com/" target="_blank">загрузочный ISO образ</a> и загрузиться с него. Вы должны увидеть приветственный экран ниже:
 		<img src="pictures/banner.png" alt="" class="center"><br/>
-You can boot something over the network. Unlike a traditional PXE ROM, iPXE is able to boot over a wide area network such as the Internet. If the machine you are testing is connected to the Internet, you can boot the iPXE <a href="https://boot.ipxe.org/demo/boot.php" target="_blank">demonstration image</a>.</p>
+Вы можете загрузить что-нибудь через сеть. В отличие от традиционного PXE ROM, iPXE может загружаться через интернет. Если устройство, на котором Вы используете iPXE, подключено к интернет, Вы можете загрузить <a href="https://boot.ipxe.org/demo/boot.php" target="_blank">демонстрационный образ iPXE</a>.</p>
 	</div></section>
 	<section class="slide" id="BuildOptions"><div>
-		<h2>All Kind of build/boot options</h2>
+		<h2>Все виды настойки сборки/загрузки</h2>
 		<ol>
-			<li>Using a boot CD-ROM or USB key</li>
-			<li>Chainloading from an existing PXE ROM (DHCP)</li>
-			<li>Replacing an existing PXE ROM
+			<li>Использование загрузочного устройства CD-ROM или USB</li>
+			<li>Подгрузка из существующего PXE ROM (DHCP)</li>
+			<li>Замена прошивки существующего PXE ROM
 				<ul>
-					<li>Large ROM images support</li>
-					<li>EFI ROM images support</li>
+					<li>Поддержка больших ROM образов</li>
+					<li>Поддержка EFI ROM образов</li>
 				</ul>
 			</li>
 		</ol>
 	</div></section>
 	<section class="slide cover" id="Scripting"><div>
-		<h2>Scripting</h2>
+		<h2>Скрипты</h2>
 		<img src="pictures/Matrix.jpg" alt="">
 	</div></section>
 	<section class="slide" id="Scripts"><div>
-		<h2>Script Sample</h2>
+		<h2>Пример скрипта</h2>
 		<pre>			<code>!#ipxe</code>
 			<code>dhcp || goto retry_dhcp</code>
-			<code>set base-url ${boot-url}/ubuntu-12.04-server-amd64/install</code>
+			<code>set base-url ${boot-url}/ubuntu-20.04-server-amd64/install</code>
 			<code>kernel ${base-url}/netboot/ubuntu-installer/amd64/linux</code>
 			<code>initrd ${base-url}/netboot/ubuntu-installer/amd64/initrd.gz</code>
 			<code>boot || goto failed</code>
 		</pre>
 	</div></section>
 	<section class="slide"><div>
-		<h2>Scripting</h2>
+		<h2>Скрипты</h2>
 		<ul>
-			<li>Flow control
+			<li>Управление потоком
 				<ul>
-					<li>You can use the goto command to jump to a predefined script label.</li>
+					<li>Вы можете использовать команду goto для перенаправления к пункту скрипта.</li>
 				</ul>
 			</li>
-			<li>Error handling</li>
-			<li>An iPXE script does not have to be a static text file.
+			<li>Обработка ошибок</li>
+			<li>iPXE скрипт не обязательно должен быть статичным файлом.
 				 <ul>
-					<li>You could direct iPXE to boot from the URL.</li>
+					<li>Вы можете указать iPXE грузиться по URL.</li>
 				</ul>
 			</li>
 		</ul>
-		<p class="note">See more sample on <a href="https://gist.github.com/robinsmidsrod/2234639"  target="_blank">robinsmidsrod gist.</a></p>
+		<p class="note">Посмотрите больше примеров на <a href="https://gist.github.com/robinsmidsrod/2234639"  target="_blank">robinsmidsrod gist.</a></p>
 	</div></section>
 	<section class="slide cover" id="Wimboot"><div>
-		<h2>WinPE boot</h2>
+		<h2>Загрузка WinPE</h2>
 		<img src="pictures/wimboot.png" alt="">
 	</div></section>
 	<section class="slide"><div>
-		<h2>WinPE boot</h2>
+		<h2>Загрузка WinPE</h2>
 		<ul>
-			<li>Windows via HTTP
+			<li>Windows через HTTP
 				<ul>
-					<li>Using iPXE and wimboot, you can boot into Windows PE via HTTP.</li>
+					<li>Используя iPXE и wimboot, Вы можете загрузить Windows PE через HTTP.</li>
 				</ul>
 			</li>
-			<li>Faster
+			<li>Быстрее
 				<ul>
-					<li>Booting Windows PE via HTTP is much faster than using traditional TFTP-based methods such as Windows Deployment Services (WDS).</li>
+					<li>Загрузка Windows PE через HTTP намого быстрее, чем через стандартные, основанные на TFTP методы, такие как Windows Deployment Services (WDS).</li>
 				</ul>
 			</li>
 		</ul>
 	</div></section>
-	<section class="slide cover" id="Next"><div>
-		<h2>Pending Feature</h2>
-		<img src="pictures/future.jpg" alt="">
-	</div></section>
-	<section class="slide"><div>
-		<h2>Pending Feature</h2>
-		<ul style="font-size:16px;">
-			<li>IPv6 support
-				<ul>
-					<li><a href="https://github.com/ipxe/ipxe/pull/6" target="_blank">Pull request waiting</a>, not merge, why?</li>
-				</ul>
-			</li>
-			<li>EFI support
-				<ul>
-					<li><a href="http://lists.ipxe.org/pipermail/ipxe-devel/2012-September/001825.html" target="_blank">EFI snponly can't detect network device</a>, patch available, not merge, why?</li>
-					<li><a href="http://ipxe.org/efi/vision" target="_blank">EFI Vision</a></li>
-				</ul>
-			</li>
-			<li>Pull request pending on Github
-				<ul>
-					<li><a href="https://github.com/ipxe/ipxe/pulls?direction=desc&page=1&sort=created&state=open" target="_blank">Unmerge pull request waiting</a></li>
-				</ul>
-			</li>
-			<li>NFS support
-				<ul>
-					<li><a href="http://ipxe.org/gsoc/nfs">NFS support from GSoC 2012</a>, pending clean up and merge, update?</li>
-				</ul>
-			</li>
-			<li>No official release since gpxe forked
-				<ul>
-					<li>Unneed as master branch is a stable branch, lack of information</li>
-					<li>Generate confusion as a version number is show in the boot banner</li>
-				</ul>
-			</li>
-	</div></section>
-	<section class="slide cover" id="More"><div>
-		<h2>Learn More</h2>
+		<section class="slide cover" id="More"><div>
+		<h2>Узнайте больше</h2>
 		<img src="pictures/more_innovation.jpg" alt="">
 	</div></section>
 	<section class="slide"><div>
-		<h2>Learn more</h2>
+		<h2>Узнайте больше</h2>
 		<ul>
-			<li>Read more on <a href="https://ipxe.org/" target="_blank">ipxe.org</a>.</li>
-			<li>Test iPXE build easily using <a href="https://rom-o-matic.eu/" target="_blank">rom-o-matic.eu</a>.</li>
-			<li>Learn more about Networkboot on <a href="http://networkboot.org/" target="_blank">networkboot.org</a>.</li>
+			<li>Прочитайте больше на <a href="https://ipxe.org/" target="_blank">ipxe.org</a>.</li>
+			<li>Тестируйте iPXE сборки легко с помощью <a href="https://ipxe.pcserviceburgas.com/" target="_blank">rom-o-matic</a>.</li>
+			<li>Узнайте больше о загрузке по сети на <a href="http://networkboot.org/" target="_blank">networkboot.org</a>.</li>
 		</ul>
 	</div></section>
 	<section class="slide cover" id="Support"><div>
-		<h2>Community</h2>
-		<img src="pictures/support.jpg" alt="">
-	</div></section>
-	<section class="slide"><div>
-		<h2>Open Source Community</h2>
-		<ul>
-			<li>You can discuss general iPXE issues in the iPXE <a href="http://forum.ipxe.org/" target="_blank">discussion forum</a>.</li>
-			<li><a href="https://lists.ipxe.org/mailman/listinfo/ipxe-devel" target="_blank">Subscribe</a> to the mailing list, or view the <a href="http://lists.ipxe.org/pipermail/ipxe-devel/" target="_blank">archive of past messages</a>.</li>
-			<li>Real-time help is often available on IRC on the #ipxe channel on the Freenode IRC network or you can use the Freenode <a href="https://webchat.freenode.net/?channels=#ipxe">web chat interface</a>.</li>
-			<li><a href="https://plus.google.com/communities/103400740116727487788" target="_blank">Goole+ Network booting Community</a>
-		</ul>
-	</div></section>
-	<!--
-		To hide progress bar from entire presentation
-		just remove progress element.
-	-->
+		<h2>Сообщество</h2>
+	  <img src="pictures/support.jpg" alt="">
+  </div></section>
+  <section class="slide"><div>
+	  <h2>Open Source Сообщество</h2>
+	  <ul>
+		  <li>Вы можете обсудить основные ошибки iPXE в обсуждении на <a href="http://forum.ipxe.org/" target="_blank">форуме iPXE</a>.</li>
+			<li><a href="https://lists.ipxe.org/mailman/listinfo/ipxe-devel" target="_blank">Подписаться</a> на рассылку, или просмотреть <a href="http://lists.ipxe.org/pipermail/ipxe-devel/" target="_blank">архив сообщений</a>.</li>
+		  <li>Помощь в режиме реального времени обычно протекает в IRC на канале #ipxe в Freenode IRC network, или Вы можете использовать Freenode <a href="https://webchat.freenode.net/?channels=#ipxe">web chat интерфейс</a>.</li>
+	  </ul>
+  </div></section>
+  <!--
+  	To hide progress bar from entire presentation
+  	just remove progress element.
+  -->
 	<div class="progress"><div></div></div>
-	<script src="shower/shower.min.js"></script>
+  <script src="shower/shower.min.js"></script>
 </body>
 </html>
