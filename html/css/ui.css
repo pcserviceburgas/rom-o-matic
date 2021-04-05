@@ -176,7 +176,7 @@ input, select, textarea {
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
-		color: #ffffff;
+		color: limegreen;
 		text-decoration: none;
 	}
 
@@ -260,7 +260,7 @@ input, select, textarea {
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-			color: inherit;
+			color: limegreen;
 			text-decoration: none;
 			border-bottom: 0;
 		}
@@ -4159,6 +4159,7 @@ input, select, textarea {
  * ================================================================================
  * Dynamic iPXE image generator
  *
+ * Copyright (C) 2021 Alexander Sorokin. Based on work of James DeVincentis.
  * Copyright (C) 2020 James DeVincentis. Based on work of Francois Lacroix.
  * Copyright (C) 2012-2019 Francois Lacroix. All Rights Reserved.
  * Website: http://ipxe.org, https://github.com/xbgmsharp/ipxe-buildweb
@@ -4215,25 +4216,25 @@ input, select, textarea {
 
 .help {
 	cursor: help;
-	color: #999;
+	color: limegreen;
 	text-decoration: none;
 }
 
 .help:hover{
 	cursor: help;
-	color: #000;
+	color: limegreen;
 	text-decoration: underline;
 }
 
 .help_buildcfg {
 	cursor: help;
-	color: #000;
+	color: limegreen;
 	text-decoration: none;
 }
 
 .help_buildcfg:hover{
 	cursor: help;
-	color: #000;
+	color: limegreen;
 	text-decoration: underline;
 }
 
